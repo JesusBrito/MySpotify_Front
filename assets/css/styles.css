@@ -1,0 +1,15 @@
+body{
+	background: #C9C9C9
+}
+
+.identificate input{
+}
+
+.registrate input{
+}
+
+.error{
+	font-weight: bold;
+
+	color: #cc0000 ;
+}
