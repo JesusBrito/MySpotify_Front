@@ -1,0 +1,1 @@
+This ist the frontend of my own version of spotify, iam using the mean stack
