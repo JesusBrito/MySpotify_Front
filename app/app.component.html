@@ -1,46 +1,61 @@
 
 <!--Cuando se encuentra loggeado-->
-<div *ngIf="identity" class="navigation col-md-1">
-	<h1>
- 		{{title}}
-	</h1>
-	<nav class="navigation">
-		<a href="#"> 
-			<span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
-			Buscar
-		</a>
-		<a href="#"> 
-			<span class="glyphicon glyphicon-stat" aria-hidden="true"></span> 
-			Artistas
-		</a>
-		<a href="#"> 
-			<span class="glyphicon glyphicon-book" aria-hidden="true"></span> 
-			Albums
-		</a>
-	</nav>
+<div class="row">
+	<div *ngIf="identity" class="navigation col-md-1">
+		<h1 class="head-title">
+			<a [routerLink]="['/']">
+				<i class="fa fa-music" aria-hidden="true"></i> 
+				{{title}}
+			</a>
+		</h1>
+		<nav id="navigation">
+			<a href="#"> 
+				<i class="fa fa-search" aria-hidden="true"></i>
+				Buscar
+			</a>
+			<a href="#"> 
+				<i class="fa fa-star" aria-hidden="true"></i>
+				Artistas
+			</a>
+			<a href="#"> 
+				<i class="fa fa-book" aria-hidden="true"></i>
+				Albums
+			</a>
+		</nav>
 
-	<nav class="user_logged">
-		<span>
-			{{identity.name}}
-		</span>
-		<span class="btn btn-warning"(click)="logout()">
-			Cerrar sesión
-		</span>
-		<a [routerLink]="['/mis-datos']"> 
-			<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 
-			Mis datos
-		</a>
-	</nav>
+		<nav id="user_logged" class="flex-column" >
+			<div class="user-image">
+				<img id="image-logged" src="{{url+'/get-image-user/'+ identity.image}}" alt="Imágen de usuario"/>
+			</div>
+			<span id="identity_name">
+				{{identity.name}}
+			</span>
+			
+			<a [routerLink]="['/mis-datos']"> 
+				<i class="fa fa-cogs" aria-hidden="true"></i> 
+				Mis datos
+			</a>
+			<a (click)="logout()" class="btn-logout"> 
+				<i class="fa fa-sign-out" aria-hidden="true"></i>
+				Salir
+			</a>
+		</nav>
+	</div>
+	<div *ngIf="identity" class="central col-md-11">
+		<router-outlet></router-outlet>
+	</div>	
 </div>
-<div *ngIf="identity" class="central col-md-11">
-	<p>Ingresaste en la aplicación</p>
-	<router-outlet></router-outlet>
-</div>
+
+
+
+
+
+
 
 <!--Cuando no se encuentra loggeado-->
 <div class="container" *ngIf="!identity">
 	<div class="row">
-		<div class="col-sm-12 col-md-12">
+		<div class="col-sm-12 col-md-11">
 			<div class="jumbotron jumbotron-fluid">
 			  <div class="container">
 			    <h1 class="display">Musicfy</h1>
